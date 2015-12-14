@@ -47,7 +47,9 @@
 	// Try to use CADisplayLink director
 	// if it fails (SDK < 3.1) use the default director
 	if( ! [CCDirector setDirectorType:kCCDirectorTypeDisplayLink] )
+  {
 		[CCDirector setDirectorType:kCCDirectorTypeDefault];
+  }
 	
 	
 	CCDirector *director = [CCDirector sharedDirector];

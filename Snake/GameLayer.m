@@ -56,7 +56,7 @@
 {
 	if( (self=[super init])) {
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bgm.mp3" loop:YES];
-    srandom(time(0));
+    srandom((unsigned int)time(0));
     apple = [[CCTexture2D alloc] initWithImage:[UIImage imageNamed:@"heart"]];
     body = [[CCTexture2D alloc] initWithImage:[UIImage imageNamed:@"body"]];
     block = [[CCTexture2D alloc] initWithImage:[UIImage imageNamed:@"block"]];
@@ -233,7 +233,7 @@
     curdt -= delay;
     lastMove = nextMove;
     score += 1;
-    scoreLabel.string = [NSString stringWithFormat:@"%d", score];
+    scoreLabel.string = [NSString stringWithFormat:@"%lu", (unsigned long)score];
   }
   
   if (delay > 0.07) {
@@ -318,7 +318,7 @@
     
     if ((location. x < 50 && reverse_key == NO) || (location.x > 430 && reverse_key == YES))
     {
-      nextMove = lastMove<2?(3 - lastMove):abs(2-lastMove);
+      nextMove = lastMove < 2 ? (3 - lastMove):(2 - (long)lastMove);
       /*
        0: up -> 3
        1: down -> 2

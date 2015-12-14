@@ -26,9 +26,14 @@
 {
 	if( (self=[super init])) {
     
-    CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Marker Felt" fontSize:70]], [CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"Click to RESTART!" fontName:@"Marker Felt" fontSize:64] block:^(id sender) {
-      [[CCDirector sharedDirector] popScene];
-    }], nil];
+    CCMenu *menu = [CCMenu menuWithItems:
+                    [CCMenuItemLabel itemWithLabel:
+                     [CCLabelTTF labelWithString:@"GAME OVER" fontName:@"Marker Felt" fontSize:70]],
+                    [CCMenuItemLabel itemWithLabel:
+                     [CCLabelTTF labelWithString:@"Click to RESTART!" fontName:@"Marker Felt" fontSize:64]
+                                             block:^(id sender) {
+                                               [[CCDirector sharedDirector] popScene];
+                                             }], nil];
     
 		CGSize size = [[CCDirector sharedDirector] winSize];
     
