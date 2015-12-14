@@ -16,6 +16,7 @@
 @implementation AppDelegate
 
 @synthesize window;
+@synthesize viewController;
 
 - (void) removeStartupFlicker
 {
@@ -41,7 +42,7 @@
 - (void) applicationDidFinishLaunching:(UIApplication*)application
 {
 	// Init the window
-	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	// Try to use CADisplayLink director
 	// if it fails (SDK < 3.1) use the default director
@@ -52,7 +53,7 @@
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	// Init the View Controller
-	viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+	self.viewController = [[RootViewController alloc] init];
 	viewController.wantsFullScreenLayout = YES;
 	
 	//
@@ -96,7 +97,7 @@
 	[viewController setView:glView];
 	
 	// make the View Controller a child of the main window
-	[window addSubview: viewController.view];
+  window.rootViewController = viewController;
 	
 	[window makeKeyAndVisible];
 	
