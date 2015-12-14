@@ -8,10 +8,11 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
+#import "MainLayer.h"
+#import "GameLayer.h"
 
 // HelloWorldLayer implementation
-@implementation HelloWorldLayer
+@implementation MainLayer
 
 +(CCScene *) scene
 {
@@ -19,7 +20,7 @@
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	MainLayer *layer = [MainLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -35,17 +36,21 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
 		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+    CCLayerColor *backgroundLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 255)];
+
+    CCMenu *menu = [CCMenu menuWithItems:[CCMenuItemLabel itemWithLabel:[CCLabelTTF labelWithString:@"Click to Start!" fontName:@"Marker Felt" fontSize:64] block:^(id sender) {
+      [[CCDirector sharedDirector] pushScene:[GameLayer scene]];
+    }], nil];
 
 		// ask director the the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
 	
 		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
+		menu.position =  ccp( size.width /2 , size.height/2 );
+    [menu setColor:ccc3(0, 0, 0)];
 		
-		// add the label as a child to this Layer
-		[self addChild: label];
+		[self addChild:backgroundLayer z:0];
+		[self addChild:menu z:1];
 	}
 	return self;
 }
