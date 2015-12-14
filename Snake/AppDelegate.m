@@ -100,6 +100,31 @@
   window.rootViewController = viewController;
 	
 	[window makeKeyAndVisible];
+  
+  [window addConstraint:[NSLayoutConstraint constraintWithItem:glView
+                                                     attribute:NSLayoutAttributeCenterX
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:window
+                                                     attribute:NSLayoutAttributeCenterX
+                                                    multiplier:1.f constant:0.f]];
+  [window addConstraint:[NSLayoutConstraint constraintWithItem:glView
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:window
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1.f constant:0.f]];
+  [window addConstraint:[NSLayoutConstraint constraintWithItem:glView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:window
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.f constant:0.f]];
+  [window addConstraint:[NSLayoutConstraint constraintWithItem:glView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:window
+                                                     attribute:NSLayoutAttributeWidth
+                                                    multiplier:1.f constant:0.f]];
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
